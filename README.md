@@ -1,2 +1,2 @@
 # pre-course-js-lessons
-Зractice lessons from precourse js
+Practice lessons from precourse js
