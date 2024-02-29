@@ -1,0 +1,21 @@
+.playListImage{
+  width: 100px;
+  height: 100px;
+}
+.track, .wrapper_info_track{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.track{
+  gap: 10px;
+  align-items: center;
+}
+.wrapper_info_track{
+  flex-direction: column;
+  gap: 5px;
+}
+.trackImage{
+  width: 40px;
+  height: 40px;
+}

@@ -58,15 +58,42 @@ wrapperPage.appendChild(wrapperPlayer);
 
 renderPlaylist(playlist);
 function renderPlaylist(playlistForRendering) {
-    renderPlaylistHeader(playlistForRendering);
-    renderTrack(playlistForRendering.tracks[0]);
-    renderTrack(playlistForRendering.tracks[1]);
+    renderPlaylistHeader(playlistForRendering.playListInfo, wrapperPlayer);
+    playlistForRendering.tracks.forEach(track => renderTrack(track, wrapperPlayer));
+}
+
+function renderPlaylistHeader(playlistForRendering, wrapperPlaylist){
+    const playListTitleElement = document.createElement('h1');
+    playListTitleElement.append(playlistForRendering.title);
+
+    const playListImageElement = document.createElement('img');
+    playListImageElement.src = playlistForRendering.coverImgUrl;
+    playListImageElement.classList.add('playListImage');
+
+    const tracksListElement = document.createElement('ul');
+
+    wrapperPlaylist.append(playListTitleElement, playListImageElement, tracksListElement);
+}
+function renderTrack(track, wrapper){
+    const trackElement = document.createElement('li');
+    trackElement.classList.add('track');
+    const trackImage = document.createElement('img');
+    trackImage.src = track.trackCoverImageUrl;
+    trackImage.classList.add('trackImage');
+    const wrapperInfoTrack = document.createElement('div');
+    wrapperInfoTrack.classList.add('wrapper_info_track');
+    const trackTitle = document.createElement('h2');
+    const artistName = document.createElement('h3');
+    const trackAudio = document.createElement('audio');
+    trackAudio.src = track.trackFileUrl;
+    trackAudio.classList.add('trackAudio');
+    trackAudio.controls = true;
+
+    trackTitle.append(track.trackTitle);
+    artistName.append(track.artistName);
+    wrapperInfoTrack.append(trackTitle, artistName);
+    trackElement.append(trackImage, wrapperInfoTrack, trackAudio);
+    wrapper.append(trackElement);
 }
 
 
-function renderPlaylistHeader(inputPlaylistForRendering){
-    // здесь логика отрисовки шапки "входного" плейлиста
-}
-function renderTrack(inputTrackForRendering){
-    // здесь логика отрисовки "входного" трека
-}
